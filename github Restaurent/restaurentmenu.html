@@ -1,0 +1,178 @@
+<!DOCTYPE html>    
+<meta charset="UTF-8">
+<meta name="published" content="sathya">
+<meta name="description" content="please fill in the below forms and application">
+<meta name="viewport" content="width=device-width initial-scale=1.0">
+<html>
+<head>
+<title>restaurent menu</title>
+<style>
+*{
+padding:0;
+margin:0;
+box-sizing:border-box;}
+.container{
+display:grid;
+place-items:center;
+height:100vh;
+}
+.items{
+width:400px;
+height:auto;
+box-sizing:border-box;
+box-shadow:0 0 5px gray;
+border-radius:10px;
+padding:10px 0;
+}
+.items img{
+width:300px;
+height:300px;
+object-fit:cover;
+box-shadow:0 0 5px gray;
+border-radius:10px;
+display:block;
+margin:auto;
+}
+h1,h2{
+text-align:center;
+text-transform:uppercase;
+}
+p{
+margin:10px auto;
+width:95%;
+color:violet;
+}
+.arrow-left{
+border-width:10px 20px 10px 0;
+left:0;
+border-color:transparent violet transparent transparent;
+box-sizing:border-box;
+cursor:pointer;
+}
+.arrow-right{
+border-width:10px 0 10px 20px;
+right:0;
+border-color:transparent transparent transparent violet;
+box-sizing:border-box;
+cursor:pointer;
+}
+.btn{
+text-align:center;
+}
+#random{
+padding:3px 20px;
+margin:5px 5px;
+cursor:pointer;
+font-size:17px;
+background-color:transparent;
+border:none;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="items">
+    <h1 id="item">food item-1</h1>
+	  <p id="para">The Chippiparai dog is a sighthound breed of dog. It is a single-colored breed</p>		   
+		<img src="D:project/saravanan/img/pro/jsrm5.jpg" alt="img" id="img">    
+       <h2 id="hotel">Hotel Name-1</h2>
+	   <p id="desc">block chickens can usually be differentiated from hens by their striking plumage of long flowing tails</p>
+	   
+    <div class="btn">
+       <button class="arrow-left" id="prev"></button>
+       <button id="random">Random menu</button>
+	   <button id="next" class="arrow-right"></button>
+    </div>
+  </div>
+</div>
+<script>
+let menuItems = [
+ { id:1,
+  item:"food item1",
+  para:"The Chippiparai dog is a sighthound breed of dog. It is a single-colored breed",
+  img:"D:project/saravanan/img/pro/jsrm2.jpg",
+  hotel:"Hotel Name1",
+  desc:"block chickens can usually be differentiated from hens by their striking plumage of long flowing tails",
+  },
+ { id:2,
+  item:"food item2",
+  para:"It is a single-colored breed",
+  img:"D:project/saravanan/img/pro/jsrm1.jpg",
+  hotel:"Hotel Name2",
+  desc:"block chickens can usually be differentiated from hens by their striking plumage of long flowing tails",
+  }, 
+ { id:3,
+  item:"food item3",
+  para:"The Chippiparai was best pet in our tamilnadu",
+  img:"D:project/saravanan/img/pro/jsrm5.jpg",
+  hotel:"Hotel Name3",
+  desc:"block chickens can usually be differentiated from hens by their striking plumage of long flowing tails",
+  },  
+  { id:4,
+  item:"food item4",
+  para:"mmmm nnnnnn yyyyy uuuu  llll ",
+  img:"D:project/saravanan/img/pro/jsrm3.jpg",
+  hotel:"Hotel Name4",
+  desc:"block chickens can usually be differentiated from hens by their striking plumage of long flowing tails",
+  },  
+  { id:5,
+  item:"food item5",
+  para:"hoiii uioooo jai  hooo ",
+  img:"D:project/saravanan/img/pro/jsrm4.jpg",
+  hotel:"Hotel Name5",
+  desc:"block chickens can usually be differentiated from hens by their striking plumage of long flowing tails",
+  }  
+]
+
+const item = document.getElementById("item"); 
+const para = document.getElementById("para");
+const img = document.getElementById("img");
+const hotel = document.getElementById("hotel");
+const desc = document.getElementById("desc");
+const random = document.getElementById("random");
+const prev = document.getElementById("prev");
+const next = document.getElementById("next");
+
+ currentMenu = 0;
+ // doubt ask mama
+ window.addEventListener("DOMContentLoaded",()=>{
+    allMenu(currentMenu);
+ });
+const allMenu = ()=>{
+const menu = menuItems[currentMenu];
+item.textContent = menu.item;
+para.textContent = menu.para;
+img.src = menu.img;
+hotel.textContent = menu.hotel;
+desc.textContent = menu.desc;
+};
+
+console.log(allMenu);
+ // i will create events for random button
+  
+random.addEventListener("click",()=>{
+
+   currentMenu = Math.floor(Math.random()*menuItems.length);
+     allMenu(currentMenu);
+}); 
+
+prev.addEventListener("click",()=>{
+     currentMenu--;
+	 if(currentMenu < 0 ){
+	   currentMenu = menuItems.length - 1;
+	   }
+	 allMenu(currentMenu);
+ });
+next.addEventListener("click",()=>{
+  currentMenu++;
+  // doubt ask mama
+   if(currentMenu > menuItems.length - 1){
+       currentMenu = 0; 
+    }
+	allMenu(currentMenu);
+})
+ 
+
+</script>
+</body>
+</html>
